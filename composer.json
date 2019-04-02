@@ -1,0 +1,59 @@
+{
+  "name": "exfriend/afterglow",
+  "description": "Ignite your Laravel",
+  "keywords": [
+    "framework",
+    "laravel",
+    "laravel zero",
+    "console",
+    "cli"
+  ],
+  "homepage": "https://afterglow.app",
+  "type": "composer-plugin",
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/laravel-zero/laravel-zero/issues",
+    "source": "https://github.com/laravel-zero/laravel-zero"
+  },
+  "authors": [
+    {
+      "name": "Vladislav Othchenashev",
+      "email": "vlad@serpentine.io"
+    }
+  ],
+  "require": {
+    "php": "^7.1.3",
+    "laravel-zero/framework": "5.8.*",
+    "nunomaduro/laravel-console-menu": "^2.1",
+    "padraic/phar-updater": "^1.0.6"
+  },
+  "require-dev": {
+    "mockery/mockery": "^1.0",
+    "phpunit/phpunit": "^7.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "optimize-autoloader": true
+  },
+  "scripts": {
+    "post-create-project-cmd": [
+      "@php application app:rename"
+    ]
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "bin": [
+    "afterglow"
+  ]
+}
