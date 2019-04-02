@@ -2,6 +2,9 @@
 
 namespace App\Commands;
 
+use App\Recipes\AddHelpersFile;
+use App\Recipes\AddMustHavePackages;
+use App\Recipes\ScaffoldFrontend;
 use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
 
@@ -21,6 +24,12 @@ class Init extends Command
      */
     protected $description = 'Scaffold Laravel Installation';
 
+    protected $recipes = [
+        AddHelpersFile::class,
+        AddMustHavePackages::class,
+        ScaffoldFrontend::class,
+    ];
+
     /**
      * Execute the console command.
      *
@@ -28,8 +37,15 @@ class Init extends Command
      */
     public function handle()
     {
+        foreach ( $this->recipes as $recipe )
+        {
+            ( new $recipe( $this ) )->handle();
+        }
+
+        $this->line( '' );
         $fire = '🔥';
-        $this->line( $fire );
+        $this->line( $fire . '   Scaffolding Done!   ' . $fire );
+        $this->line( '' );
     }
 
     /**
