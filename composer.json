@@ -9,7 +9,7 @@
     "cli"
   ],
   "homepage": "https://afterglow.app",
-  "type": "project",
+  "type": "library",
   "license": "MIT",
   "support": {
     "issues": "https://github.com/laravel-zero/laravel-zero/issues",
