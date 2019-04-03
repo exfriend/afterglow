@@ -1,0 +1,8 @@
+#!/usr/bin/env php
+<?php
+
+$av = collect( $argv );
+$argv = collect()->push( $av->shift() )->push( 'compose' )->push( $av->implode( ' ' ) )->toArray();
+$_SERVER[ 'argv' ] = $argv;
+
+require( __DIR__ . '/afterglow' );

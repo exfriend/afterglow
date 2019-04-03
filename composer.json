@@ -55,6 +55,7 @@
   "prefer-stable": true,
   "bin": [
     "afterglow",
-    "a"
+    "a",
+    "ac"
   ]
 }

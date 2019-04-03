@@ -2,33 +2,26 @@
 
 namespace App\Commands;
 
-use App\Recipes\AddHelpersFile;
-use App\Recipes\AddMustHavePackages;
-use App\Recipes\ScaffoldFrontend;
 use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
-class Init extends Command
+class Up extends Command
 {
     /**
      * The signature of the command.
      *
      * @var string
      */
-    protected $signature = 'ignite';
+    protected $signature = 'up';
 
     /**
      * The description of the command.
      *
      * @var string
      */
-    protected $description = 'Scaffold Laravel Installation';
-
-    protected $recipes = [
-        AddHelpersFile::class,
-        AddMustHavePackages::class,
-        ScaffoldFrontend::class,
-    ];
+    protected $description = '';
 
     /**
      * Execute the console command.
@@ -37,19 +30,24 @@ class Init extends Command
      */
     public function handle()
     {
-        foreach ( $this->recipes as $recipe )
+        //        $project = json_decode( file_get_contents( '.afterglow.json' ), true )[ 'project' ];
+        $process = new Process( 'afterglow "up -d --build"' );
+
+        $process->setTty( Process::isTtySupported() );
+
+        $process->run();
+
+        // executes after the command finishes
+        if ( !$process->isSuccessful() )
         {
-            ( new $recipe( $this ) )->handle();
+            throw new ProcessFailedException( $process );
         }
 
-        $this->line( '' );
-        $fire = '🔥';
-        $this->line( $fire . '   Scaffolding Done!   ' . $fire );
-        $this->line( '' );
+        echo $process->getOutput();
     }
 
     /**
-     * Define the command's schedule .
+     * Define the command's schedule.
      *
      * @param \Illuminate\Console\Scheduling\Schedule $schedule
      * @return void
