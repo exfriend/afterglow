@@ -31,7 +31,7 @@ class Down extends Command
     public function handle()
     {
         //        $project = json_decode( file_get_contents( '.afterglow.json' ), true )[ 'project' ];
-        $process = new Process( 'afterglow "down"' );
+        $process = new Process( 'afterglow compose "down"' );
 
         $process->setTty( Process::isTtySupported() );
 

@@ -31,7 +31,7 @@ class Workspace extends Command
     public function handle()
     {
         $project = json_decode( file_get_contents( '.afterglow.json' ), true )[ 'project' ];
-        $process = new Process( 'afterglow compose exec ' . $project . '__workspace fish' );
+        $process = new Process( 'afterglow compose "exec ' . $project . '__workspace bash"' );
 
         $process->setTty( Process::isTtySupported() );
 

@@ -31,7 +31,7 @@ class Up extends Command
     public function handle()
     {
         //        $project = json_decode( file_get_contents( '.afterglow.json' ), true )[ 'project' ];
-        $process = new Process( 'afterglow "up -d --build"' );
+        $process = new Process( 'afterglow compose "up -d --build"' );
 
         $process->setTty( Process::isTtySupported() );
 
