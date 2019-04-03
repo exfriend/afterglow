@@ -1,8 +1,16 @@
 #!/usr/bin/env php
 <?php
 
-$av = collect( $argv );
-$argv = collect()->push( $av->shift() )->push( 'compose' )->push( $av->implode( ' ' ) )->toArray();
-$_SERVER[ 'argv' ] = $argv;
+
+$av = [ 'compose' ];
+$f = $argv[ 0 ];
+$avv = array_slice( $argv, 1 );
+$avv = implode( ' ', $avv );
+
+$_SERVER[ 'argv' ] = [
+    $f,
+    'compose',
+    $avv,
+];
 
 require( __DIR__ . '/afterglow' );

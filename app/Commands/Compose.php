@@ -36,7 +36,7 @@ class Compose extends Command
         // executes after the command finishes
         if ( !$process->isSuccessful() )
         {
-            throw new ProcessFailedException( $process );
+//            throw new ProcessFailedException( $process );
         }
 
         echo $process->getOutput();
