@@ -1,5 +1,6 @@
-<p align="center">
-<h1>Afterglow</h1>
-</p>
-🔥
+![logo](./docs/logo.jpg)
+
+Afterglow
+=========
+
 Ignite your Laravel
